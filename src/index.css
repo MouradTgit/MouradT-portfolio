@@ -76,8 +76,46 @@
     }
   }
 
+  @keyframes animated-border {
+    0% {
+      stroke-dashoffset: 400;
+    }
+    100% {
+      stroke-dashoffset: -50;
+    }
+  }
+
+  @keyframes float {
+    0% {
+      transform: translatey(0);
+    }
+    50% {
+      transform: translatey(-5px);
+    }
+    100% {
+      transform: translatey(0);
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
   .animate-fade-in {
     animation: fade-in 1.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
   }
 
   .animation-delay-100 {
@@ -108,8 +146,34 @@
     animation-delay: 800ms;
   }
 
+
+
+  .group:hover .animated-border-path {
+    animation: animated-border 1.5s linear infinite;
+
+  }
+
+  .animated-border:hover {
+    background-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
+    backdrop-filter: blur(8px);
+    box-shadow:0 0 20px color-mix(in srgb, var(--color-primary) 20%, transparent)
+  }
+
   .glow-text {
     text-shadow: 0 0 6px
       color-mix(in srgb, var(--color-primary) 100%, transparent);
     }
+
+
+  .glow-text-highlight {
+    text-shadow: 0 0 6px 
+    color-mix(in srgb, var(--color-highlight) 100%, transparent);
+    }
+
+    .glow-border {
+      box-shadow: 0 0 20px 
+      color-mix(in srgb, var(--color-highlight) 100%, transparent);
+    }
+
+
 }

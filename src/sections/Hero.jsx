@@ -1,3 +1,21 @@
+import {Button} from "@/components/Button";
+import { ArrowRight, Download } from "lucide-react";
+import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
+
+const skills = [
+  "React",
+  "Tailwind CSS",
+  "Figma",
+  "Detail-Oriented",
+  "Dynamic",
+  "Problem Solver",
+  "Quick Learner",
+  "Adaptable",
+  "Collaborative",
+  "Creative",
+  "Open-Minded",
+];
+
 export const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -21,8 +39,7 @@ export const Hero = () => {
               backgroundColor: "#20B2A6",
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              animation: `slow-drift ${15 + Math.random() * 20
-                }s ease-in-out infinite`,
+              animation: `slow-drift ${15 + Math.random() * 20}s ease-in-out infinite`,
               animationDelay: `${Math.random() * 5}s`
             }}
           />
@@ -61,8 +78,63 @@ export const Hero = () => {
                 experiences that drive engagement and satisfaction.
               </p>
             </div>
+
+            {/* CTA Buttons */}
+            <div className="mt-8 flex items-center gap-6 animate-fade-in animation-delay-700" style={{ animationDuration: "1.2s" }}>
+              <Button size="lg">
+                Contact Me <ArrowRight className="w-5 h-5" />
+              </Button>
+              <AnimatedBorderButton>
+                <Download className="w-4 h-4 z-100" />
+                Download CV
+              </AnimatedBorderButton>
+            </div>
+
+            {/* Social Links */}
+            <div className="mt-8 ml-6 flex items-center gap-4 animate-fade-in animation-delay-1000" style={{ animationDuration: "1.2s" }}>
+              <a href="https://github.com/MouradTgit" target="_blank" rel="noopener noreferrer"
+                className="text-sm font-medium glow-text-highlight transition-all duration-300 hover:underline hover:text-[var(--color-highlight)]"
+                >
+                GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/mourad-toure-1494203b0/" target="_blank" rel="noopener noreferrer"
+                className="text-sm font-medium glow-text-highlight transition-all duration-300 hover:underline hover:text-[var(--color-highlight)]"
+                >
+                LinkedIn
+              </a>
+            </div>
           </div>
+
           {/* Right Content */}
+          <div className="relative animate-fade-in animation-delay-1000" style={{ animationDuration: "1.2s" }}>
+            {/* Profile Image */}
+            <div className="relative overflow-hidden w-140 h-120 mx-auto">
+              <div>
+                <img 
+                  src="/PaperMourad.jpg" 
+                  alt="Mourad Toure" 
+                  className="w-full h-full aspect-[4/5] object-cover rounded-full" 
+                />
+
+                {/* Floating Badge */}
+                {/* Stats Badge */}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Skills Section (moved outside the 2-column grid) */}
+        <div className="mt-20 animate-fade-in animation-delay-1000" style={{ animationDuration: "1.2s" }}>
+          <p>My Skills</p>
+          <div className="relative overflow-hidden">
+            <div className="flex animate-marquee whitespace-nowrap">
+              {[...skills, ...skills].map((skill, index) => (
+                <div key={index}>
+                  <span>{skill}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
