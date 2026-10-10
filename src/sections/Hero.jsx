@@ -1,5 +1,5 @@
 import {Button} from "@/components/Button";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, ChevronDown } from "lucide-react";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
 
 const skills = [
@@ -47,7 +47,7 @@ export const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-6 pt-32 pb-20 relative z-10">
+      <div className="container mx-auto px-6 pt-16 md:pt-32 pb-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div>
@@ -108,34 +108,56 @@ export const Hero = () => {
           {/* Right Content */}
           <div className="relative animate-fade-in animation-delay-1000" style={{ animationDuration: "1.2s" }}>
             {/* Profile Image */}
-            <div className="relative overflow-hidden w-140 h-120 mx-auto">
-              <div>
-                <img 
-                  src="/PaperMourad.jpg" 
-                  alt="Mourad Toure" 
-                  className="w-full h-full aspect-[4/5] object-cover rounded-full" 
+            <div className="relative max-w-md mx-auto">
+              <div 
+                className="absolute inset-0
+                rounded-3xl bg-gradient-to-br
+                from-[var(--color-primary)]/30 via-transparent
+                to-[var(--color-primary)]/10 blur-2xl animate-pulse"
                 />
+                <div className="relative rounded-3xl glow-border">
+                  <img
+                    src="/PaperMourad.jpg"
+                    alt="Mourad Toure"
+                    className="w-full aspect-[4/5] object-cover rounded-3xl shadow-lg shadow-[var(--color-primary)]/25"
+                  />
 
                 {/* Floating Badge */}
                 {/* Stats Badge */}
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Skills Section (moved outside the 2-column grid) */}
-        <div className="mt-20 animate-fade-in animation-delay-1000" style={{ animationDuration: "1.2s" }}>
-          <p>My Skills</p>
-          <div className="relative overflow-hidden">
-            <div className="flex animate-marquee whitespace-nowrap">
-              {[...skills, ...skills].map((skill, index) => (
-                <div key={index}>
-                  <span>{skill}</span>
+            {/* Skills moved under the photo */}
+            <div className="mt-8">
+              <p className="text-md text-center text-[var(--color-muted-primary)]/90 mb-6">My Skills</p>
+              <div className="relative overflow-hidden">
+                <div className="flex gap-8 items-center animate-marquee whitespace-nowrap">
+                  {[...skills, ...skills].map((skill, index) => (
+                    <div key={index} className="flex-shrink-0">
+                      <span className="text-lg font-semibold hover:text-[var(--color-muted-foreground)] transition-colors tracking-wide px-3">
+                        {skill}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </div>
+      </div>
+
+
+      <div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 
+      animate-fade-in animation-delay-800"
+      >
+        <a
+          href="#about"
+          className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
+        >
+          <span className="text-xs uppercase tracking-wider">Scroll</span>
+          <ChevronDown className="w-6 h-6 animate-bounce" />
+        </a>
       </div>
     </section>
   );
